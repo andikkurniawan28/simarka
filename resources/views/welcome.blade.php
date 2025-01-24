@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- Navigasi Atas -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Sistem Informasi Manajemen Risiko Kebon Agung (SIMARKA)</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
             <!-- Navigasi Kiri -->
             <nav class="col-md-2 sidebar py-3">
                 <h5>Sasaran Mutu</h5>
-                <ul class="list-unstyled">
+                <ul>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Korporat</a></li>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Divisi</a></li>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Unit</a></li>
@@ -48,19 +48,19 @@
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Seksi</a></li>
                 </ul>
                 <h5 class="mt-4">Pencapaian Sasaran Mutu</h5>
-                <ul class="list-unstyled">
+                <ul>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Rencana Pencapaian</a></li>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Jadwal Monitoring</a></li>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Monitoring</a></li>
                 </ul>
                 <h5 class="mt-4">Pelaporan dan Catatan</h5>
-                <ul class="list-unstyled">
+                <ul>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Register Sasaran Mutu</a></li>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Profil Sasaran Mutu</a></li>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Pemantauan & Review</a></li>
                 </ul>
                 <h5 class="mt-4">Setup Awal</h5>
-                <ul class="list-unstyled">
+                <ul>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Bagian</a></li>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Jabatan</a></li>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">User / Pengguna</a></li>
@@ -78,7 +78,7 @@
             <!-- Navigasi Kanan -->
             <nav class="col-md-2 sidebar py-3">
                 <h5>Proses Manajemen Risiko</h5>
-                <ul class="list-unstyled">
+                <ul>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Komunikasi dan Konsultasi</a></li>
                     <li><a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#modalXL">Lingkup, Konteks, Kriteria</a></li>
                     <ul>
@@ -114,9 +114,9 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
+    {{-- <footer class="bg-dark text-white text-center py-3">
         <p class="mb-0">© 2025 Risk Management - All Rights Reserved</p>
-    </footer>
+    </footer> --}}
 
     <!-- Modal XL -->
     <div class="modal fade" id="modalXL" tabindex="-1" aria-labelledby="modalXLLabel" aria-hidden="true">

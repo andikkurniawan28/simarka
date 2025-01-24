@@ -30,7 +30,7 @@ img {
 
         /* Styling untuk navigasi kiri dan kanan */
         .sidebar {
-            background-color: #d8e6f3; /* Warna biru muda */
+            background-color: #c9c9c9; /* Warna biru muda */
             height: 100vh; /* Menutupi seluruh tinggi viewport */
         }
 
@@ -38,6 +38,7 @@ img {
 .sidebar h5 {
     background-color: #000; /* Background hitam */
     color: #fff; /* Teks putih */
+    text-align: center;
     padding: 10px; /* Jarak padding */
     border-radius: 4px; /* Membuat ujung sedikit melengkung */
     font-size: 13px; /* Ukuran font header menu lebih kecil */
