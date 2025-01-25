@@ -114,9 +114,9 @@
     </div>
 
     <!-- Footer -->
-    {{-- <footer class="bg-dark text-white text-center py-3">
+    <footer class="bg-info text-white text-center py-3">
         <p class="mb-0">© 2025 Risk Management - All Rights Reserved</p>
-    </footer> --}}
+    </footer>
 
     <!-- Modal XL -->
     <div class="modal fade" id="modalXL" tabindex="-1" aria-labelledby="modalXLLabel" aria-hidden="true">
@@ -144,10 +144,25 @@
         function logout() {
             // Menampilkan SweetAlert untuk konfirmasi logout
             Swal.fire({
-                title: 'Logout Berhasil!',
-                text: 'Anda telah keluar dari sistem.',
-                icon: 'success',
-                confirmButtonText: 'OK'
+                title: 'Apakah Anda yakin ingin logout?',
+                text: 'Anda akan keluar dari sistem.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, logout',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Jika pengguna mengonfirmasi logout
+                    Swal.fire({
+                        title: 'Logout Berhasil!',
+                        text: 'Anda telah keluar dari sistem.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        // Arahkan pengguna ke halaman logout atau lakukan aksi logout
+                        window.location.href = '/logout'; // Sesuaikan URL sesuai kebutuhan
+                    });
+                }
             });
         }
     </script>
