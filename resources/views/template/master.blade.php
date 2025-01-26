@@ -110,6 +110,9 @@
         </div>
     </div>
 
+    <!-- Page level plugins -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
     <!-- Bootstrap core JavaScript-->
     {{-- <script src="{{ url('/') }}/sbadmin2/vendor/jquery/jquery.min.js"></script> --}}
     <script src="{{ url('/') }}/sbadmin2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -120,7 +123,6 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ url('/') }}/sbadmin2/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
     {{-- <script src="{{ url('/') }}/sbadmin2/vendor/chart.js/Chart.min.js"></script> --}}
 
     <!-- Page level custom scripts -->
@@ -128,7 +130,6 @@
     <script src="{{ url('/') }}/sbadmin2/js/demo/chart-pie-demo.js"></script>
 
     <!-- Datatable --> --}}
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/buttons/3.0.1/js/dataTables.buttons.js"></script>
     <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.dataTables.js"></script>
