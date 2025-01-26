@@ -20,6 +20,31 @@
     <!-- Custom styles for this template-->
     <link href="{{ url('/') }}/sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Datatable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.1/css/buttons.dataTables.css" />
+
+    <!-- Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css"
+        integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css"
+        integrity="sha512-CbQfNVBSMAYmnzP3IC+mZZmYMP2HUnVkV4+PwuhpiMUmITtSpS7Prr3fNncV1RBOnWxzz4pYQ5EAGG4ck46Oig=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .half-line-break {
+            display: block;
+            margin-top: 0.5em;
+            /* Adjust this value based on your desired spacing */
+        }
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -86,7 +111,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ url('/') }}/sbadmin2/vendor/jquery/jquery.min.js"></script>
+    {{-- <script src="{{ url('/') }}/sbadmin2/vendor/jquery/jquery.min.js"></script> --}}
     <script src="{{ url('/') }}/sbadmin2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -96,11 +121,97 @@
     <script src="{{ url('/') }}/sbadmin2/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="{{ url('/') }}/sbadmin2/vendor/chart.js/Chart.min.js"></script>
+    {{-- <script src="{{ url('/') }}/sbadmin2/vendor/chart.js/Chart.min.js"></script> --}}
 
     <!-- Page level custom scripts -->
-    <script src="{{ url('/') }}/sbadmin2/js/demo/chart-area-demo.js"></script>
+    {{-- <script src="{{ url('/') }}/sbadmin2/js/demo/chart-area-demo.js"></script>
     <script src="{{ url('/') }}/sbadmin2/js/demo/chart-pie-demo.js"></script>
+
+    <!-- Datatable --> --}}
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.html5.min.js"></script>
+
+    <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <!-- Bootstrap Select JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0/js/bootstrap-select.min.js"></script>
+
+    <!-- Bootstrap JS (needed for Bootstrap Select) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        new DataTable('#example', {
+            order: [
+                [0, 'desc']
+            ],
+            // layout: {
+            //     bottomStart: {
+            //         buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'],
+            //     },
+            // },
+        });
+    </script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script><!-- Include SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/amiryxe/easy-number-separator/easy-number-separator.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // const thousandSeparator = '.';
+            // const decimalSeparator = ',';
+
+            // easyNumberSeparator({
+            //     selector: '.number-format',
+            //     separator: thousandSeparator,
+            //     decimalSeparator: decimalSeparator
+            // });
+
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: '{{ session('success') }}',
+                });
+            @endif
+
+            @if (session('fail'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Failed',
+                    text: '{{ session('fail') }}',
+                });
+            @endif
+
+            @if ($errors->any())
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    html: `
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    `,
+                });
+            @endif
+        });
+    </script>
+    @yield('additional_script')
 
 </body>
 

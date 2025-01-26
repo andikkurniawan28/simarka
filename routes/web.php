@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BagianController;
+use App\Http\Controllers\SeksiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard.index');
 })->name('dashboard');
+
+Route::resource('/bagian', BagianController::class);
+Route::resource('/seksi', SeksiController::class);

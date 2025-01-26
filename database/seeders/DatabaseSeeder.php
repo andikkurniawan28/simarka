@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Bagian;
+use App\Models\Seksi;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        Bagian::insert([
+            ['nama' => 'TUK'],
+            ['nama' => 'Tanaman'],
+            ['nama' => 'Teknik'],
+            ['nama' => 'Pabrikasi'],
+            ['nama' => 'QC'],
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Seksi::insert([
+            ['nama' => 'Personalia, Umum, Gudang Perlengkapan', 'bagian_id' => 1],
+            ['nama' => 'Akunting, PDE, Logistik', 'bagian_id' => 1],
+        ]);
     }
 }

@@ -13,7 +13,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item @yield('dashboard')">
         <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -41,7 +41,7 @@
             <i class="fas fa-fw fa-sitemap"></i>
             <span style="font-size:12px;">Lingkup, Konteks, Kriteria</span>
         </a>
-        <div id="lingkupKonteksKriteria" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="lingkupKonteksKriteria" class="collapse" aria-labelledby="headinglingkupKonteksKriteria" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Lingkup & Konteks</a>
                 <a class="collapse-item" href="">Kriteria Dampak</a>
@@ -59,7 +59,7 @@
             <i class="fas fa-fw fa-exclamation-triangle"></i>
             <span>Penilaian Risiko</span>
         </a>
-        <div id="penilaianRisiko" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="penilaianRisiko" class="collapse" aria-labelledby="headingpenilaianRisiko" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Identifikasi Risiko</a>
                 <a class="collapse-item" href="">Analisa Risiko</a>
@@ -82,7 +82,7 @@
             <i class="fas fa-fw fa-eye"></i>
             <span>Pemantauan & Review</span>
         </a>
-        <div id="pemantauanDanReview" class="collapse" aria-labelledby="headingUtilities"
+        <div id="pemantauanDanReview" class="collapse" aria-labelledby="headingpemantauanDanReview"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Risiko Teregistrasi</a>
@@ -99,7 +99,7 @@
             <i class="fas fa-fw fa-clipboard-list"></i>
             <span>Pencatatan & Pelaporan</span>
         </a>
-        <div id="pencatatanDanPelaporan" class="collapse" aria-labelledby="headingUtilities"
+        <div id="pencatatanDanPelaporan" class="collapse" aria-labelledby="headingpencatatanDanPelaporan"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Daftar Register Risiko</a>
@@ -124,7 +124,7 @@
             <i class="fas fa-fw fa-bullseye"></i>
             <span>Sasaran Mutu</span>
         </a>
-        <div id="sasaranMutu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="sasaranMutu" class="collapse" aria-labelledby="headingsasaranMutu" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Korporat</a>
                 <a class="collapse-item" href="">Divisi</a>
@@ -142,7 +142,7 @@
             <i class="fas fa-fw fa-flag-checkered"></i>
             <span style="font-size:12px;">Pencapaian Sasaran Mutu</span>
         </a>
-        <div id="pencapaianSasaranMutu" class="collapse" aria-labelledby="headingPages"
+        <div id="pencapaianSasaranMutu" class="collapse" aria-labelledby="headingpencapaianSasaranMutu"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Rencana Pencapaian</a>
@@ -159,7 +159,7 @@
             <i class="fas fa-fw fa-file-alt"></i>
             <span>Pelaporan & Catatan</span>
         </a>
-        <div id="pelaporanDanCatatan" class="collapse" aria-labelledby="headingPages"
+        <div id="pelaporanDanCatatan" class="collapse" aria-labelledby="headingpelaporanDanCatatan"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Register Sasaran Mutu</a>
@@ -170,15 +170,16 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item @yield('setupAwal')">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#setupAwal"
             aria-expanded="true" aria-controls="setupAwal">
             <i class="fas fa-fw fa-tools"></i>
             <span>Setup Awal</span>
         </a>
-        <div id="setupAwal" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="setupAwal" class="collapse" aria-labelledby="headingsetupAwal" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Bagian</a>
+                <a class="collapse-item" href="{{ route('bagian.index') }}">Bagian</a>
+                <a class="collapse-item" href="{{ route('seksi.index') }}">Seksi</a>
                 <a class="collapse-item" href="">Jabatan</a>
                 <a class="collapse-item" href="">User / Pengguna</a>
                 <a class="collapse-item" href="">Master Dampak</a>

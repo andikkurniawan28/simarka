@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('seksis', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('bagian_id')->constrained();
+            $table->string('nama')->unique();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
