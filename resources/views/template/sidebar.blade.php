@@ -180,6 +180,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('bagian.index') }}">Bagian</a>
                 <a class="collapse-item" href="{{ route('seksi.index') }}">Seksi</a>
+                <a class="collapse-item" href="{{ route('sub_seksi.index') }}">Sub Seksi</a>
                 <a class="collapse-item" href="">Jabatan</a>
                 <a class="collapse-item" href="">User / Pengguna</a>
                 <a class="collapse-item" href="">Master Dampak</a>

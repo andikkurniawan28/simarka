@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SubSeksi extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function seksi(){
+        return $this->belongsTo(Seksi::class);
+    }
 }

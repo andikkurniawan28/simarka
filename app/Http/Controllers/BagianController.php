@@ -14,6 +14,7 @@ class BagianController extends Controller
     {
         // Menampilkan semua data Bagian
         $bagians = Bagian::all();
+        // return $bagians;
         return view('bagian.index', compact('bagians'));
     }
 
@@ -56,8 +57,7 @@ class BagianController extends Controller
      */
     public function edit(Bagian $bagian)
     {
-        // Menampilkan form edit (jika menggunakan view)
-        return view('bagian.edit', compact('bagian'));
+        //
     }
 
     /**

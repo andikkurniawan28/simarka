@@ -60,9 +60,7 @@ class SeksiController extends Controller
      */
     public function edit(Seksi $seksi)
     {
-        // Menampilkan form edit Seksi dengan data Bagian
-        $bagians = Bagian::all();
-        return view('seksi.edit', compact('seksi', 'bagians'));
+        //
     }
 
     /**

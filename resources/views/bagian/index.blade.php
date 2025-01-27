@@ -11,14 +11,12 @@
 @section('content')
     @csrf
     <div class="container-fluid">
-
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h4 class="m-0 font-weight-bold text-primary">@yield('title')</h4>
             </div>
             <div class="card-body">
                 <div class="btn-group" role="group" aria-label="action">
-                    <!-- Trigger Modal Button -->
                     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addBagianModal">
                         {{ ucwords(str_replace('_', ' ', 'tambah')) }}
                     </button>
@@ -40,10 +38,14 @@
                                     <td>{{ $bagian->nama }}</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="action">
-                                            <a href="{{ route('bagian.edit', $bagian->id) }}"
-                                                class="btn btn-secondary btn-sm">{{ ucwords(str_replace('_', ' ', 'edit')) }}</a>
+                                            <button type="button" class="btn btn-secondary btn-sm btn-edit"
+                                                data-id="{{ $bagian->id }}" data-nama="{{ $bagian->nama }}">
+                                                {{ ucwords(str_replace('_', ' ', 'edit')) }}
+                                            </button>
                                             <button type="button" class="btn btn-danger btn-sm delete-btn"
-                                                data-id="{{ $bagian->id }}" data-name="{{ $bagian->name }}">{{ ucwords(str_replace('_', ' ', 'hapus')) }}</button>
+                                                data-id="{{ $bagian->id }}" data-name="{{ $bagian->name }}">
+                                                {{ ucwords(str_replace('_', ' ', 'hapus')) }}
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
@@ -53,15 +55,15 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="addBagianModal" tabindex="-1" role="dialog" aria-labelledby="addBagianModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addBagianModal" tabindex="-1" role="dialog" aria-labelledby="addBagianModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addBagianModalLabel">{{ ucwords(str_replace('_', ' ', 'tambah_bagian')) }}</h5>
+                    <h5 class="modal-title" id="addBagianModalLabel">{{ ucwords(str_replace('_', ' ', 'tambah_bagian')) }}
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -82,6 +84,59 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="editBagianModal" tabindex="-1" role="dialog" aria-labelledby="editBagianModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editBagianModalLabel">{{ ucwords(str_replace('_', ' ', 'edit_bagian')) }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="editBagianForm" action="" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="editNama">{{ ucwords(str_replace('_', ' ', 'nama_bagian')) }}</label>
+                            <input type="text" class="form-control" id="editNama" name="nama" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const editModal = document.getElementById('editBagianModal');
+            const editForm = document.getElementById('editBagianForm');
+            const editNamaInput = document.getElementById('editNama');
+
+            document.querySelectorAll('.btn-edit').forEach(button => {
+                button.addEventListener('click', function() {
+                    const bagianId = this.getAttribute('data-id');
+                    const bagianNama = this.getAttribute('data-nama');
+
+                    // Set form action dynamically
+                    editForm.action = `{{ url('bagian') }}/${bagianId}`;
+
+                    // Set input values dynamically
+                    editNamaInput.value = bagianNama;
+
+                    // Show the modal
+                    $(editModal).modal('show');
+                });
+            });
+        });
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

@@ -1,7 +1,7 @@
 @extends('template.master')
 
 @section('title')
-    {{ ucwords(str_replace('_', ' ', 'daftar_seksi')) }}
+    {{ ucwords(str_replace('_', ' ', 'daftar_sub_seksi')) }}
 @endsection
 
 @section('setupAwal')
@@ -17,7 +17,7 @@
             </div>
             <div class="card-body">
                 <div class="btn-group" role="group" aria-label="action">
-                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addseksiModal">
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addsub_seksiModal">
                         {{ ucwords(str_replace('_', ' ', 'tambah')) }}
                     </button>
                 </div>
@@ -28,26 +28,28 @@
                             <tr>
                                 <th>{{ strtoupper(str_replace('_', ' ', 'id')) }}</th>
                                 <th>{{ ucwords(str_replace('_', ' ', 'bagian')) }}</th>
+                                <th>{{ ucwords(str_replace('_', ' ', 'seksi')) }}</th>
                                 <th>{{ ucwords(str_replace('_', ' ', 'nama')) }}</th>
                                 <th>{{ ucwords(str_replace('_', ' ', 'action')) }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($seksis as $seksi)
+                            @foreach ($sub_seksis as $sub_seksi)
                                 <tr>
-                                    <td>{{ $seksi->id }}</td>
-                                    <td>{{ $seksi->bagian->nama }}</td>
-                                    <td>{{ $seksi->nama }}</td>
+                                    <td>{{ $sub_seksi->id }}</td>
+                                    <td>{{ $sub_seksi->seksi->bagian->nama }}</td>
+                                    <td>{{ $sub_seksi->seksi->nama }}</td>
+                                    <td>{{ $sub_seksi->nama }}</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="action">
                                             <button type="button" class="btn btn-secondary btn-sm btn-edit"
-                                                data-id="{{ $seksi->id }}"
-                                                data-nama="{{ $seksi->nama }}"
-                                                data-bagian-id="{{ $seksi->bagian_id }}">
+                                                data-id="{{ $sub_seksi->id }}"
+                                                data-nama="{{ $sub_seksi->nama }}"
+                                                data-seksi-id="{{ $sub_seksi->seksi_id }}">
                                                 {{ ucwords(str_replace('_', ' ', 'edit')) }}
                                             </button>
                                             <button type="button" class="btn btn-danger btn-sm delete-btn"
-                                                data-id="{{ $seksi->id }}" data-name="{{ $seksi->name }}">
+                                                data-id="{{ $sub_seksi->id }}" data-name="{{ $sub_seksi->name }}">
                                                 {{ ucwords(str_replace('_', ' ', 'hapus')) }}
                                             </button>
                                         </div>
@@ -61,29 +63,29 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addseksiModal" tabindex="-1" role="dialog" aria-labelledby="addseksiModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addsub_seksiModal" tabindex="-1" role="dialog" aria-labelledby="addsub_seksiModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addseksiModalLabel">{{ ucwords(str_replace('_', ' ', 'tambah_seksi')) }}</h5>
+                    <h5 class="modal-title" id="addsub_seksiModalLabel">{{ ucwords(str_replace('_', ' ', 'tambah_sub_seksi')) }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('seksi.store') }}" method="POST">
+                <form action="{{ route('sub_seksi.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="nama">{{ ucwords(str_replace('_', ' ', 'nama_bagian')) }}</label>
-                            <select class="form-control select2" id="bagian" name="bagian_id" width="100%" required>
-                                <option disabled selected>Pilih {{ ucwords(str_replace('_', ' ', 'bagian')) }} :</option>
-                                @foreach ($bagians as $bagian)
-                                    <option value="{{ $bagian->id }}">{{ $bagian->nama }}</option>
+                            <label for="nama">{{ ucwords(str_replace('_', ' ', 'nama_seksi')) }}</label>
+                            <select class="form-control select2" id="seksi" name="seksi_id" width="100%" required>
+                                <option disabled selected>Pilih {{ ucwords(str_replace('_', ' ', 'seksi')) }} :</option>
+                                @foreach ($seksis as $seksi)
+                                    <option value="{{ $seksi->id }}">{{ $seksi->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="nama">{{ ucwords(str_replace('_', ' ', 'nama_seksi')) }}</label>
+                            <label for="nama">{{ ucwords(str_replace('_', ' ', 'nama_sub_seksi')) }}</label>
                             <input type="text" class="form-control" id="nama" name="nama" required>
                         </div>
                     </div>
@@ -100,7 +102,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editSeksiModalLabel">{{ ucwords(str_replace('_', ' ', 'edit_seksi')) }}</h5>
+                    <h5 class="modal-title" id="editSeksiModalLabel">{{ ucwords(str_replace('_', ' ', 'edit_sub_seksi')) }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -110,16 +112,16 @@
                     @method('PUT')
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="editBagian">{{ ucwords(str_replace('_', ' ', 'nama_bagian')) }}</label>
-                            <select class="form-control select2" id="editBagian" name="bagian_id" required>
-                                <option disabled>Pilih {{ ucwords(str_replace('_', ' ', 'bagian')) }}</option>
-                                @foreach ($bagians as $bagian)
-                                    <option value="{{ $bagian->id }}">{{ $bagian->nama }}</option>
+                            <label for="editBagian">{{ ucwords(str_replace('_', ' ', 'nama_seksi')) }}</label>
+                            <select class="form-control select2" id="editBagian" name="seksi_id" required>
+                                <option disabled>Pilih {{ ucwords(str_replace('_', ' ', 'seksi')) }}</option>
+                                @foreach ($seksis as $seksi)
+                                    <option value="{{ $seksi->id }}">{{ $seksi->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="editNama">{{ ucwords(str_replace('_', ' ', 'nama_seksi')) }}</label>
+                            <label for="editNama">{{ ucwords(str_replace('_', ' ', 'nama_sub_seksi')) }}</label>
                             <input type="text" class="form-control" id="editNama" name="nama" required>
                         </div>
                     </div>
@@ -141,16 +143,16 @@
 
             document.querySelectorAll('.btn-edit').forEach(button => {
                 button.addEventListener('click', function () {
-                    const seksiId = this.getAttribute('data-id');
-                    const seksiNama = this.getAttribute('data-nama');
-                    const bagianId = this.getAttribute('data-bagian-id');
+                    const sub_seksiId = this.getAttribute('data-id');
+                    const sub_seksiNama = this.getAttribute('data-nama');
+                    const seksiId = this.getAttribute('data-seksi-id');
 
                     // Set form action dynamically
-                    editForm.action = `{{ url('seksi') }}/${seksiId}`;
+                    editForm.action = `{{ url('sub_seksi') }}/${sub_seksiId}`;
 
                     // Set input values dynamically
-                    editNamaInput.value = seksiNama;
-                    editBagianSelect.value = bagianId;
+                    editNamaInput.value = sub_seksiNama;
+                    editBagianSelect.value = seksiId;
 
                     // Trigger Select2 to refresh the dropdown
                     $(editBagianSelect).trigger('change');
@@ -160,10 +162,10 @@
                 });
             });
 
-            // Initialize Select2 for bagian dropdown
+            // Initialize Select2 for seksi dropdown
             $('#editBagian').select2({
                 theme: 'bootstrap',
-                placeholder: 'Pilih bagian',
+                placeholder: 'Pilih seksi',
                 width: '100%'
             });
         });
@@ -176,8 +178,8 @@
             deleteButtons.forEach(button => {
                 button.addEventListener('click', function(event) {
                     event.preventDefault();
-                    const seksi_id = this.getAttribute('data-id');
-                    const seksi_name = this.getAttribute('data-name');
+                    const sub_seksi_id = this.getAttribute('data-id');
+                    const sub_seksi_name = this.getAttribute('data-name');
                     Swal.fire({
                         title: 'Apa Anda yakin?',
                         text: 'Anda tidak bisa mengembalikan data ini jika terhapus!',
@@ -191,8 +193,8 @@
                             const form = document.createElement('form');
                             form.setAttribute('method', 'POST');
                             form.setAttribute('action',
-                                `{{ route('seksi.destroy', ':id') }}`.replace(
-                                    ':id', seksi_id));
+                                `{{ route('sub_seksi.destroy', ':id') }}`.replace(
+                                    ':id', sub_seksi_id));
                             const csrfToken = document.getElementsByName("_token")[0].value;
 
                             const hiddenMethod = document.createElement('input');
@@ -203,7 +205,7 @@
                             const name = document.createElement('input');
                             name.setAttribute('type', 'hidden');
                             name.setAttribute('name', 'name');
-                            name.setAttribute('value', seksi_name);
+                            name.setAttribute('value', sub_seksi_name);
 
                             const csrfTokenInput = document.createElement('input');
                             csrfTokenInput.setAttribute('type', 'hidden');
@@ -226,9 +228,9 @@
 @section('additional_script')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#bagian').select2({
+        $('#seksi').select2({
             theme: 'bootstrap',
-            placeholder: "Pilih bagian"
+            placeholder: "Pilih seksi"
         });
     });
 </script>
